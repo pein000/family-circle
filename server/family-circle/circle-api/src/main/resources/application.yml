@@ -1,0 +1,41 @@
+spring:
+  profiles:
+    active: dev
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://118.25.250.36:4506/family_circle?useSSL=false&serverTimezone=GMT%2B8
+    username: root
+    password: d!8=eG3?a
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      # 最小空闲连接数量
+      minimum-idle: 8
+      # 最大连接数
+      maximum-pool-size: 64
+      # 是否自动提交池中返回的连接
+      auto-commit: true
+      # 连接空闲时间时间（毫秒），超时则被释放（retired），默认:10分钟
+      idle-timeout: 30000
+      pool-name: CircleHikariCP
+      # 连接池中连接的最大生命周期 超时而且没被使用则被释放（retired），默认:30分钟 1800000ms，建议设置比数据库超时时长少60秒
+      max-lifetime: 1800000
+      # 连接超时时间
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
+### 日志配置
+log:
+  application:
+    name: circle-api
+  level:
+    # 生产环境日志级别
+    prod: info
+    # 开发环境日志级别
+    dev: info
+    # SQL日志级别 debug才会打印
+    sql: info
+  file:
+    path: /opt/log/circle-api
+    name: circle-api
+    maxIndex: 72
+    maxFileSize: 100MB
+

@@ -2,13 +2,13 @@
 	<view>
 		<uni-section title="记录你的生活" type="line"></uni-section>
 		<view class="example-body" v-for="(item,index) in list" :key="index" @tap="openInfo" :data-newsid="item.post_id">
-			<uni-card :isShadow="true" title="标题内容"  mode="title" thumbnail="https://img-cdn-qiniu.dcloud.net.cn/new-page/uni.png" extra="技术没有上限" note="true" @click="clickCard">
+			<uni-card :isShadow="true" :title="item.title"  mode="title" thumbnail="https://img-cdn-qiniu.dcloud.net.cn/new-page/uni.png" extra="技术没有上限" note="true" @click="clickCard">
 				<view>
 					<view class="image-box">
-						<image class="image" mode="aspectFill" src="https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/shuijiao.jpg" />
+						<image class="image" mode="aspectFill" :src="item.imageContent" />
 					</view>
 					<view class="content-box">
-						<text class="content-box-text">标题卡片带有一个双标题头部，右侧为额外描述信息 ，内容可自定义实现</text>
+						<text class="content-box-text">{{item.textContent}}</text>
 					</view>
 				</view>
 				<template slot="footer">
@@ -30,32 +30,36 @@
 			return {
 				list: [{
 					id: 0,
-					title: '',
-					content: '',
+					title: '标题文字1',
+					imageContent: 'https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/shuijiao.jpg',
+					textContent: '标题卡片带有一个双标题头部，右侧为额外描述信息 ，内容可自定义实现',
 					shadow: false,
 					note: '',
 					extra: '',
 					thumbnail: ''
 				}, {
 					id: 1,
-					title: '标题文字',
-					content: '',
+					title: '标题文字2',
+					imageContent: 'https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/shuijiao.jpg',
+					textContent: '标题卡片带有一个双标题头部，右侧为额外描述信息 ，内容可自定义实现',
 					shadow: true,
 					note: '',
 					extra: '额外信息',
 					thumbnail: ''
 				}, {
 					id: 2,
-					title: '标题文字',
-					content: '',
+					title: '标题文字3',
+					imageContent: 'https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/shuijiao.jpg',
+					textContent: '标题卡片带有一个双标题头部，右侧为额外描述信息 ，内容可自定义实现',
 					shadow: true,
 					note: 'Tips',
 					extra: '额外信息',
 					thumbnail: ''
 				}, {
 					id: 3,
-					title: '标题文字',
-					content: '这是一个完整配置的基础卡片示例。内容样式可自定义。',
+					title: '标题文字4',
+					imageContent: 'https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/shuijiao.jpg',
+					textContent: '标题卡片带有一个双标题头部，右侧为额外描述信息 ，内容可自定义实现',
 					shadow: true,
 					note: 'Tips',
 					extra: '额外信息',

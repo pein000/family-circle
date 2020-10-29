@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <springProperty scope="context" name="log.application.name" source="log.application.name"/>
+    <springProperty scope="context" name="log.level.prod" source="log.level.prod"/>
+    <springProperty scope="context" name="log.level.dev" source="log.level.dev"/>
+    <springProperty scope="context" name="log.level.sql" source="log.level.sql"/>
+    <springProperty scope="context" name="log.file.path" source="log.file.path"/>
+    <springProperty scope="context" name="log.file.name" source="log.file.name"/>
+    <springProperty scope="context" name="log.file.maxIndex" source="log.file.maxIndex"/>
+    <springProperty scope="context" name="log.file.maxFileSize" source="log.file.maxFileSize"/>
+    <property name="LOG_PATTERN"
+              value="[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%p] [%t] [%c.%M:%L] : %m%n"/>
+    <appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="fileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.file.path}/${log.application.name}.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${log.file.path}/${log.application.name}.%d{yyyy-MM-dd}.%i.log.gz
+            </fileNamePattern>
+            <maxHistory>${log.file.maxIndex}</maxHistory>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>${log.file.maxFileSize}</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <appender name="asyncConsoleAppender" class="ch.qos.logback.classic.AsyncAppender">
+        <discardingThreshold>0</discardingThreshold>
+        <queueSize>100000</queueSize>
+        <neverBlock>true</neverBlock>
+        <includeCallerData>true</includeCallerData>
+        <appender-ref ref="consoleAppender"/>
+    </appender>
+    <appender name="asyncFileAppender" class="ch.qos.logback.classic.AsyncAppender">
+        <discardingThreshold>0</discardingThreshold>
+        <queueSize>100000</queueSize>
+        <neverBlock>true</neverBlock>
+        <includeCallerData>true</includeCallerData>
+        <appender-ref ref="fileAppender"/>
+    </appender>
+
+    <!-- SQL日志打印 DEBUG级别才会打印 -->
+    <logger name="java.sql.Connection" level="${log.level.sql}"/>
+    <logger name="java.sql.Statement" level="${log.level.sql}"/>
+    <logger name="java.sql.PreparedStatement" level="${log.level.sql}"/>
+    <logger name="com.syc.safety.mapper" level="${log.level.sql}"/>
+    <!-- SQL日志打印 -->
+
+    <springProfile name="prod">
+        <root level="${log.level.prod}">
+            <appender-ref ref="asyncFileAppender"/>
+        </root>
+    </springProfile>
+    <springProfile name="dev,uat">
+        <root level="${log.level.dev}">
+            <appender-ref ref="asyncConsoleAppender"/>
+        </root>
+    </springProfile>
+</configuration>

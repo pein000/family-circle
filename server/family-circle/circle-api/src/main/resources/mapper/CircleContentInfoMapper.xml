@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.family.circle.api.mapper.CircleContentInfoMapper">
+
+    <resultMap type="com.family.circle.api.entity.CircleContentInfo" id="CircleContentInfoMap">
+        <result property="id" column="id" jdbcType="OTHER"/>
+        <result property="circleTitle" column="circle_title" jdbcType="VARCHAR"/>
+        <result property="imageContent" column="image_content" jdbcType="VARCHAR"/>
+        <result property="textContent" column="text_content" jdbcType="VARCHAR"/>
+        <result property="familyUserId" column="family_user_id" jdbcType="INTEGER"/>
+        <result property="memberUserId" column="member_user_id" jdbcType="INTEGER"/>
+        <result property="memberUserName" column="member_user_name" jdbcType="VARCHAR"/>
+        <result property="memberUserAvator" column="member_user_avator" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+        <result property="isRemoved" column="is_removed" jdbcType="OTHER"/>
+    </resultMap>
+
+</mapper>
