@@ -2,7 +2,7 @@
 	<view>
 		<uni-section title="记录你的生活" type="line"></uni-section>
 		<view class="example-body" v-for="(item,index) in list" :key="index" @tap="openInfo" :data-newsid="item.post_id">
-			<uni-card :isShadow="true" :title="item.title"  mode="title" thumbnail="https://img-cdn-qiniu.dcloud.net.cn/new-page/uni.png" extra="技术没有上限" note="true" @click="clickCard">
+			<uni-card :isShadow="true" :title="item.circleTitle"  mode="title" :thumbnail="item.memberUserAvator" extra="技术没有上限" note="true" @click="clickCard">
 				<view>
 					<view class="image-box">
 						<image class="image" mode="aspectFill" :src="item.imageContent" />
@@ -28,7 +28,7 @@
 		components: {},
 		data() {
 			return {
-				list: [{
+				aa: [{
 					id: 0,
 					title: '标题文字1',
 					imageContent: 'https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/shuijiao.jpg',
@@ -65,8 +65,34 @@
 					extra: '额外信息',
 					thumbnail: 'https://img-cdn-qiniu.dcloud.net.cn/new-page/uni.png'
 				}],
+				list: [],
 				Tips: ['喜欢', '评论', '分享']
 			}
+		},
+		onShow:function(e){
+			uni.showLoading({
+			})
+			uni.request({
+				url: 'http://localhost:8080/circleContentInfo/selectPage',
+				method: 'POST',
+				data: {
+					pageNum: 1,
+					pageSize:15
+				},
+				success: res => {
+					let result = res.data;
+					console.log(this.list);
+					if (result.code == 0){
+						this.list = result.result.list;
+						console.log(this.list);
+					}
+					console.log(this.list);
+				},
+				fail: () => {},
+				complete: () => {
+					uni.hideLoading();
+				}
+			});
 		},
 		methods: {
 			clickCard() {

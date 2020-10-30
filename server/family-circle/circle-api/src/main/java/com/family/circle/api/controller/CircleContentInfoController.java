@@ -20,6 +20,7 @@ import javax.annotation.Resource;
  * @author makejava
  * @since 2020-10-29 10:59:37
  */
+@CrossOrigin
 @RestController
 @RequestMapping("circleContentInfo")
 @Slf4j

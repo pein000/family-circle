@@ -13,7 +13,7 @@
 				news:[]
 			}
 		},
-		onLoad:function(){
+		onShow:function(){
 			uni.showLoading({
 				
 			})
