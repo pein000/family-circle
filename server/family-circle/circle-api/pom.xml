@@ -7,7 +7,9 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>cricle-api</artifactId>
+    <artifactId>circle-api</artifactId>
+    <packaging>jar</packaging>
+    <name>circle-api</name>
 
     <dependencies>
         <dependency>
@@ -57,6 +59,7 @@
     </dependencies>
 
     <build>
+        <finalName>circle-api</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
