@@ -5,4 +5,6 @@ import lombok.Data;
 @Data
 public class CircleContentInfoRequest extends BasePageRequest {
 
+    private Long primaryUserId;
+
 }

@@ -7,10 +7,10 @@
         <result property="circleTitle" column="circle_title" jdbcType="VARCHAR"/>
         <result property="imageContent" column="image_content" jdbcType="VARCHAR"/>
         <result property="textContent" column="text_content" jdbcType="VARCHAR"/>
-        <result property="familyUserId" column="family_user_id" jdbcType="INTEGER"/>
+        <result property="primaryUserId" column="primary_user_id" jdbcType="INTEGER"/>
         <result property="memberUserId" column="member_user_id" jdbcType="INTEGER"/>
         <result property="memberUserName" column="member_user_name" jdbcType="VARCHAR"/>
-        <result property="memberUserAvator" column="member_user_avator" jdbcType="VARCHAR"/>
+        <result property="memberUserAvatar" column="member_user_avatar" jdbcType="VARCHAR"/>
         <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
         <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
         <result property="isRemoved" column="is_removed" jdbcType="OTHER"/>

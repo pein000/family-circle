@@ -39,3 +39,12 @@ log:
     maxIndex: 72
     maxFileSize: 100MB
 
+### websocket配置
+ws:
+  server:
+    host: 192.168.40.102
+    port: 10012
+    path: /websocket/{arg}
+  thread:
+    boss: 1
+    worker: 8

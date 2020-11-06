@@ -39,3 +39,21 @@ log:
     maxIndex: 72
     maxFileSize: 100MB
 
+### websocket配置
+ws:
+  server:
+    host: 192.168.40.102
+    port: 10012
+    path: /websocket/{arg}
+  thread:
+    boss: 1
+    worker: 8
+
+### 微信登录配置
+wechat:
+  app:
+    id: wxc0e27c714c2ec863
+    secret: eebbc8bd085a2519f63af4bdc67025a0
+  url:
+    login: https://api.weixin.qq.com/sns/jscode2session?appid=APPID&secret=SECRET&js_code=JSCODE&grant_type=authorization_code
+

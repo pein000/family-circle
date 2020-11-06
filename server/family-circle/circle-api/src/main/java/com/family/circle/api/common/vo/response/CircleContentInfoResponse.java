@@ -28,7 +28,7 @@ public class CircleContentInfoResponse {
     /**
      * 家庭用户编号
      */
-    private Long familyUserId;
+    private Long primaryUserId;
     /**
      * 成员用户编号
      */
@@ -40,7 +40,7 @@ public class CircleContentInfoResponse {
     /**
      * 成员用户头像
      */
-    private String memberUserAvator;
+    private String memberUserAvatar;
     /**
      * 创建时间
      */

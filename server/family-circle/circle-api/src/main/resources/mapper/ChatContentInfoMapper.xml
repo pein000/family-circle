@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.family.circle.api.mapper.ChatContentInfoMapper">
+
+    <resultMap type="com.family.circle.api.entity.ChatContentInfo" id="ChatContentInfoMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="content" column="content" jdbcType="VARCHAR"/>
+        <result property="type" column="type" jdbcType="OTHER"/>
+        <result property="primaryUserId" column="primary_user_id" jdbcType="INTEGER"/>
+        <result property="memberUserId" column="member_user_id" jdbcType="INTEGER"/>
+        <result property="memberUserName" column="member_user_name" jdbcType="VARCHAR"/>
+        <result property="memberUserAvatar" column="member_user_avatar" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+        <result property="isRemoved" column="is_removed" jdbcType="OTHER"/>
+    </resultMap>
+
+    <insert id="insertOne" parameterType="com.family.circle.api.entity.ChatContentInfo"
+            useGeneratedKeys="true" keyProperty="id">
+        insert into chat_content_info (
+        content,
+        type,
+        primary_user_id,
+        member_user_id,
+        member_user_name,
+        member_user_avatar,
+        create_time,
+        update_time,
+        is_removed) values (
+        #{content},
+        #{type},
+        #{primaryUserId},
+        #{memberUserId},
+        #{memberUserName},
+        #{memberUserAvatar},
+        now(),
+        now(),
+        0)
+    </insert>
+
+</mapper>

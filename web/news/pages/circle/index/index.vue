@@ -69,11 +69,11 @@
 				Tips: ['喜欢', '评论', '分享']
 			}
 		},
-		onShow:function(e){
+		onTabItemTap:function(e){
 			uni.showLoading({
 			})
 			uni.request({
-				url: 'http://localhost:8080/circleContentInfo/selectPage',
+				url: 'https://family.autumnsun.cloud/circle-api/circleContentInfo/selectPage',
 				method: 'POST',
 				data: {
 					pageNum: 1,

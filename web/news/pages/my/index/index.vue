@@ -1,7 +1,7 @@
 <template>
 	<view class="container">
 		<view class="uni-list">
-			我的
+			敬请期待。。。
 		 </view>
 	</view>
 </template>
@@ -13,7 +13,7 @@
 				news:[]
 			}
 		},
-		onShow:function(){
+		onLoad:function(){
 			uni.showLoading({
 				
 			})

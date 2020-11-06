@@ -6,6 +6,11 @@
 				"navigationBarTitleText": "首页"
 			}
 		},{
+			"path": "pages/home/index/chat",
+			"style": {
+				"navigationBarTitleText": "聊天"
+			}
+		},{
             "path" : "pages/home/info/info",
             "style" :                                                                                    
             {
